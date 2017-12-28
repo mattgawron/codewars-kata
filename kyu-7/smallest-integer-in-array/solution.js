@@ -1,7 +1,7 @@
-const sample = () => {
+const findSmallestInt = (args) => {
   return 'dummy';
 }
 
 module.exports = {
-  sample
+  findSmallestInt
 };
