@@ -1,7 +1,7 @@
-const sample = () => {
+const DNAStrand = (dna) => {
   return 'dummy';
 }
 
 module.exports = {
-  sample
+  DNAStrand
 };
