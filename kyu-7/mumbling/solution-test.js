@@ -1,6 +1,12 @@
 const solution = require('./solution');
 
 describe('accum', () => {
+  it('should return the same value when null was passed', () => {
+    expect(solution.accum(null)).toBe(null);
+  });
+  it('should return the same value when undefined was passed', () => {
+    expect(solution.accum(undefined)).toBe(undefined);
+  });
   it('should return empty string when empty string was provided', () => {
     expect(solution.accum('')).toBe('');
   });
