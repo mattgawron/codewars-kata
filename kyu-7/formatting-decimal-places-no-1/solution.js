@@ -1,7 +1,7 @@
-const sample = () => {
+const twoDecimalPlaces = (number) => {
   return 'dummy';
 }
 
 module.exports = {
-  sample
+  twoDecimalPlaces
 };
