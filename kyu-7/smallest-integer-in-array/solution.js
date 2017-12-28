@@ -1,5 +1,5 @@
 const findSmallestInt = (args) => {
-  return 'dummy';
+  return args.reduce((memo, value) => value < memo ? value : memo);
 }
 
 module.exports = {
