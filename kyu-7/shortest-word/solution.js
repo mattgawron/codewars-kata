@@ -3,5 +3,5 @@ const findShort = (s) => {
 }
 
 module.exports = {
-  sample
+  findShort
 };
