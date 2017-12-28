@@ -3,11 +3,8 @@ const accum = (s) => {
     return s;
   }
   return s.split('')
-    .map((letter, index) => {
-      const letterLowercase = letter.toLowerCase();
-      const letterUppercase = letter.toUpperCase();
-      return letterUppercase + letterLowercase.repeat(index);
-    })
+    .map((letter) => [letter.toUpperCase(), letter.toLowerCase()])
+    .map(([uppercase, lowercase], index) => uppercase + lowercase.repeat(index))
     .join('-');
 }
 
