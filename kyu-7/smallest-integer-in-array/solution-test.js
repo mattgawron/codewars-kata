@@ -11,7 +11,7 @@ describe('findSmallestInt', () => {
     expect(solution.findSmallestInt([5, 4, 3, 2, 1])).toEqual(1);
   });
   it('should return correct value for array with positive elements', () => {
-    expect(solution.findSmallestInt([3, 2, 4])).toEqual(123);
+    expect(solution.findSmallestInt([3, 2, 4])).toEqual(2);
   });
   it('should return correct value when array contains zero', () => {
     expect(solution.findSmallestInt([10, 20, 0, 15])).toEqual(0);
