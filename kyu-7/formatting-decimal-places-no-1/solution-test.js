@@ -7,4 +7,7 @@ describe('twoDecimalPlaces', () => {
   it('should return correct result for value with more than 2 places', () => {
     expect(solution.twoDecimalPlaces(3.456)).toBe(3.45);
   });
+  it('should return correct result for negative value', () => {
+    expect(solution.twoDecimalPlaces(-3.456)).toBe(-3.45);
+  });
 });
