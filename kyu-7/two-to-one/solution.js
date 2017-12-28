@@ -1,7 +1,7 @@
-const sample = () => {
+const longest = (s1, s2) => {
   return 'dummy';
 }
 
 module.exports = {
-  sample
+  longest
 };
