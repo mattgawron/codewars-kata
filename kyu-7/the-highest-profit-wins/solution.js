@@ -1,7 +1,7 @@
-const sample = () => {
+const minMax = () => {
   return 'dummy';
 }
 
 module.exports = {
-  sample
+  minMax
 };
