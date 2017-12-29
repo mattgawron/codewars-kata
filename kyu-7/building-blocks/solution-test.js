@@ -2,7 +2,7 @@ const solution = require('./solution');
 
 const width = 2;
 const length = 3;
-const height = 6;
+const height = 5;
 const data = [width, length, height];
 const block = new solution.Block(data);
 
