@@ -1,5 +1,5 @@
 const wheresWally = (string) => {
-  const wallyRegexp = /(?:^|\s)Wally(\'s)?[\.,]?(?=\s?)/g;
+  const wallyRegexp = /(?:^|\s)Wally(\'s)?[\.,]?(?=\s|$)/g;
   let wallyMatchIndex = string.search(wallyRegexp);
 
   // skip first whitespace character if exists
