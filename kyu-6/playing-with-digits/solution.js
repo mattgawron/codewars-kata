@@ -1,7 +1,7 @@
-const sample = () => {
+const digPow = (n, p) => {
   return 'dummy';
 }
 
 module.exports = {
-  sample
+  digPow
 };
