@@ -1,7 +1,13 @@
-const sample = () => {
-  return 'dummy';
+const Block = class Block {
+
+  constructor(data) {
+    // ...
+  }
+
+  // ...
+
 }
 
 module.exports = {
-  sample
+  Block
 };
