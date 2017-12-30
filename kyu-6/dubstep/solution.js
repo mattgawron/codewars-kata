@@ -1,7 +1,7 @@
-const sample = () => {
+const songDecoder = () => {
   return 'dummy';
 }
 
 module.exports = {
-  sample
+  songDecoder
 };
