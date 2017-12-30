@@ -2,7 +2,7 @@ const solution = require('./solution');
 
 describe('shiftedDiff', () => {
   it('should return 1 for pair: "esampl" and "sample"', () => {
-    expect(solution.shiftedDiff("esampl", "sample")).toBe(1);
+    expect(solution.shiftedDiff("esampl", "sample")).toBe(5);
   });
   it('should return 2 for pair: "stte" and "test"', () => {
     expect(solution.shiftedDiff("stte", "test")).toBe(2);
