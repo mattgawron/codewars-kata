@@ -1,5 +1,5 @@
 const findOdd = (A) => {
-  return 'dummy';
+  return A.reduce((result, value) => result ^ value);
 }
 
 module.exports = {
