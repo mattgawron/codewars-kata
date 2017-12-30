@@ -1,7 +1,7 @@
-const sample = () => {
+const  tribonacci = (signature, n) => {
   return 'dummy';
 }
 
 module.exports = {
-  sample
+  tribonacci
 };
