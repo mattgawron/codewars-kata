@@ -1,7 +1,7 @@
-const sample = () => {
+const digital_root = (n) => {
   return 'dummy';
 }
 
 module.exports = {
-  sample
+  digital_root
 };
