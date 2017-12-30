@@ -13,4 +13,7 @@ describe('shiftedDiff', () => {
   it('should return -1 for pair: "not" and "rotated"', () => {
     expect(solution.shiftedDiff("not", "rotated")).toBe(-1);
   });
+  it('should return -1 for pair: "in" and "inside"', () => {
+    expect(solution.shiftedDiff("in", "inside")).toBe(-1);
+  });
 });
