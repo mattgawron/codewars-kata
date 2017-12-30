@@ -1,5 +1,5 @@
 const shiftedDiff = (first, second) => {
-  return 'dummy';
+  return second.concat(second).indexOf(first);
 }
 
 module.exports = {
