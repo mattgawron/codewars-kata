@@ -1,7 +1,7 @@
-const sample = () => {
+const Xbonacci = (signature, n) => {
   return 'dummy';
 }
 
 module.exports = {
-  sample
+  Xbonacci
 };
