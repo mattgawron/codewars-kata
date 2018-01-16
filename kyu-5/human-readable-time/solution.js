@@ -1,7 +1,7 @@
-const sample = () => {
+const humanReadable = (seconds) => {
   return 'dummy';
 }
 
 module.exports = {
-  sample
+  humanReadable
 };
