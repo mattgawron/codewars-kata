@@ -5,7 +5,7 @@ describe('ipsBetween', () => {
     expect(solution.ipsBetween('10.0.0.0', '10.0.0.0')).toBe(1);
   });
   it('should work correctly when difference is in last field', () => {
-    expect(solution.ipsBetween('10.0.0.20', '10.0.0.0')).toBe(19);
+    expect(solution.ipsBetween('10.0.0.0', '10.0.0.20')).toBe(19);
   });
   it('should work correctly when difference is not in last field', () => {
     expect(solution.ipsBetween('10.0.0.0', '10.0.2.0')).toBe(512);
