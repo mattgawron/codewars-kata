@@ -1,7 +1,7 @@
-const sample = () => {
+const toCamelCase = (str) => {
   return 'dummy';
 }
 
 module.exports = {
-  sample
+  toCamelCase
 };
