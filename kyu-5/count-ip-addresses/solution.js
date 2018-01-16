@@ -1,7 +1,7 @@
-const sample = () => {
+const ipsBetween = (start, end) => {
   return 'dummy';
 }
 
 module.exports = {
-  sample
+  ipsBetween
 };
