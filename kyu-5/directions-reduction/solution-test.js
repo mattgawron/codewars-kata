@@ -25,4 +25,8 @@ describe('dirReduc', () => {
     expect(solution.dirReduc(['NORTH', 'EAST', 'SOUTH', 'WEST']))
       .toEqual(['NORTH', 'EAST', 'SOUTH', 'WEST']);
   });
+  it('should remove pair when it is splitted by removed pair', () => {
+    expect(solution.dirReduc(['NORTH', 'EAST', 'WEST', 'SOUTH']))
+      .toEqual([]);
+  });
 });
