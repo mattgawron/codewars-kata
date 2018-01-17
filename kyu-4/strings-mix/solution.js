@@ -67,6 +67,19 @@ const sortedCountReducer = (result, count, stringData) => {
   return result;
 };
 
+const countDataReducer = (result, countData) => {
+  countData.inFirst
+    .map(char => '1:' + char.repeat(+countData.count))
+    .forEach(string => result.push(string));
+  countData.inSecond
+    .map(char => '2:' + char.repeat(+countData.count))
+    .forEach(string => result.push(string));
+  countData.inBoth
+    .map(char => '=:' + char.repeat(+countData.count))
+    .forEach(string => result.push(string));
+  return result;
+};
+
 const mix = (s1, s2) => {
   const firstCharCountMap = computeCharCountMap(s1);
   const secondCharCountMap = computeCharCountMap(s2);
@@ -92,18 +105,7 @@ const mix = (s1, s2) => {
 
   return sortedCountUnion.reverse()
     .reduce(sortedCountReducerCurried, [])
-    .reduce((result, countData) => {
-      countData.inFirst
-        .map(char => '1:' + char.repeat(+countData.count))
-        .forEach(string => result.push(string));
-      countData.inSecond
-        .map(char => '2:' + char.repeat(+countData.count))
-        .forEach(string => result.push(string));
-      countData.inBoth
-        .map(char => '=:' + char.repeat(+countData.count))
-        .forEach(string => result.push(string));
-      return result;
-    }, [])
+    .reduce(countDataReducer, [])
     .join('/');
 };
 
