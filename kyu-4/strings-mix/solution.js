@@ -81,13 +81,19 @@ const countDataReducer = (result, countData) => {
 };
 
 const mix = (s1, s2) => {
+  // maps with single char as a key and count
+  // (number of occurencies of this char in string) as a value
   const firstCharCountMap = computeCharCountMap(s1);
   const secondCharCountMap = computeCharCountMap(s2);
+  // maps with number of char occurencies (count) as a key and array of
+  // chars (which have exactly count occurencies in string) as a value
   const firstCountCharMap = computeCountCharMap(firstCharCountMap);
   const secondCountCharMap = computeCountCharMap(secondCharCountMap);
+  // arrays of unique chars in first, second and both strings
   const firstCharArray = Object.keys(firstCharCountMap);
   const secondCharArray = Object.keys(secondCharCountMap);
   const sortedCharUnion = uniqueUnion(firstCharArray, secondCharArray);
+  // arrays of unique char counts in first, second and both strings
   const firstCountArray = Object.keys(firstCountCharMap);
   const secondCountArray = Object.keys(secondCountCharMap);
   const sortedCountUnion = uniqueUnion(firstCountArray, secondCountArray);
