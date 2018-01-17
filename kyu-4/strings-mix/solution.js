@@ -67,17 +67,17 @@ const sortedCountReducer = (result, count, stringData) => {
   return result;
 };
 
+const formatCharArray = (array, prefix, count) => {
+  return array.map(char => prefix + ':' + char.repeat(+count));
+};
+
 const countDataReducer = (result, countData) => {
-  countData.inFirst
-    .map(char => '1:' + char.repeat(+countData.count))
-    .forEach(string => result.push(string));
-  countData.inSecond
-    .map(char => '2:' + char.repeat(+countData.count))
-    .forEach(string => result.push(string));
-  countData.inBoth
-    .map(char => '=:' + char.repeat(+countData.count))
-    .forEach(string => result.push(string));
-  return result;
+  return [
+    ...result,
+    ...formatCharArray(countData.inFirst, '1', countData.count),
+    ...formatCharArray(countData.inSecond, '2', countData.count),
+    ...formatCharArray(countData.inBoth, '=', countData.count)
+  ];
 };
 
 const mix = (s1, s2) => {
