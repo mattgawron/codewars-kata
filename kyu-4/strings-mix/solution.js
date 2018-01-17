@@ -42,6 +42,31 @@ const removeIfExists = (array, element) => {
   }
 };
 
+const sortedCountReducer = (result, count, stringData) => {
+  const firstChars = stringData.firstCountCharMap[count] || [];
+  const secondChars = stringData.secondCountCharMap[count] || [];
+  const inFirst = [];
+  const inSecond = [];
+  const inBoth = [];
+
+  uniqueUnion(firstChars, secondChars)
+    .filter((char) => stringData.sortedCharUnion.includes(char))
+    .forEach((char) => {
+      const isInFirst = firstChars.includes(char);
+      const isInSecond = secondChars.includes(char);
+      if (isInFirst && isInSecond) {
+        inBoth.push(char);
+      } else if (isInFirst) {
+        inFirst.push(char);
+      } else {
+        inSecond.push(char);
+      }
+      removeIfExists(stringData.sortedCharUnion, char);
+    });
+  result.push({count, inFirst, inSecond, inBoth});
+  return result;
+};
+
 const mix = (s1, s2) => {
   const firstCharCountMap = computeCharCountMap(s1);
   const secondCharCountMap = computeCharCountMap(s2);
@@ -54,31 +79,19 @@ const mix = (s1, s2) => {
   const secondCountArray = Object.keys(secondCountCharMap);
   const sortedCountUnion = uniqueUnion(firstCountArray, secondCountArray);
 
-  return sortedCountUnion.reverse()
-    .reduce((result, count) => {
-      const firstChars = firstCountCharMap[count] || [];
-      const secondChars = secondCountCharMap[count] || [];
-      const inFirst = [];
-      const inSecond = [];
-      const inBoth = [];
+  const stringData = {
+    firstCharCountMap,
+    secondCharCountMap,
+    firstCountCharMap,
+    secondCountCharMap,
+    sortedCharUnion
+  };
+  const sortedCountReducerCurried = (result, count) => {
+    return sortedCountReducer(result, count, stringData);
+  };
 
-      uniqueUnion(firstChars, secondChars)
-        .filter((char) => sortedCharUnion.includes(char))
-        .forEach((char) => {
-          const isInFirst = firstChars.includes(char);
-          const isInSecond = secondChars.includes(char);
-          if (isInFirst && isInSecond) {
-            inBoth.push(char);
-          } else if (isInFirst) {
-            inFirst.push(char);
-          } else {
-            inSecond.push(char);
-          }
-          removeIfExists(sortedCharUnion, char);
-        });
-      result.push({count, inFirst, inSecond, inBoth});
-      return result;
-    }, [])
+  return sortedCountUnion.reverse()
+    .reduce(sortedCountReducerCurried, [])
     .reduce((result, countData) => {
       countData.inFirst
         .map(char => '1:' + char.repeat(+countData.count))
