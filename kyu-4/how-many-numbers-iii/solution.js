@@ -18,20 +18,20 @@ const createGenerator = () => {
       if (cache.contains(n, k, min)) {
         return cache.get(n, k, min);
       }
+      const handleNextDigit = nextDigit => {
+        const remainingSum = n - nextDigit;
+        const remainingDigits = k - 1;
+        const isNextSumBigEnough = remainingSum >= remainingDigits * nextDigit;
+        const isNextSumSmallEnough = remainingSum <= 9 * remainingDigits;
+        return isNextSumBigEnough && isNextSumSmallEnough
+          ? this.generate(remainingSum, remainingDigits, nextDigit)
+              .map(numberSuffix => nextDigit + numberSuffix)
+          : [];
+      }
       const numbers = rangeInclusive(min, Math.min(Math.floor(n / k), 9))
-        .map(nextNumber => {
-          const remainingSum = n - nextNumber;
-          const remainingDigits = k - 1;
-          const isNextSumBigEnough = remainingSum >= remainingDigits * nextNumber;
-          const isNextSumSmallEnough = remainingSum <= 9 * remainingDigits;
-          if (isNextSumBigEnough && isNextSumSmallEnough) {
-            return this.generate(remainingSum, remainingDigits, nextNumber)
-              .map(number => [nextNumber, ...number].join(''));
-          } else {
-            return [];
-          }
-        })
+        .map(handleNextDigit)
         .reduce((result, partialNumbers) => [...result, ...partialNumbers], []);
+
       cache.put(n, k, min, numbers);
       return numbers;
     }
