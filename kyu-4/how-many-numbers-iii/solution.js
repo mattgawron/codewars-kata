@@ -2,7 +2,10 @@ const cache = (() => {
   const getKeyForCacheEntry = (n, k, min) => `${n},${k},${min}`;
   const data = Array.from(new Array(10))
     .map((_, index) => index + 1)
-    .reduce((cache, min) => cache[getKeyForCacheEntry(0, 0, min)] = [''], {});
+    .reduce((cache, min) => {
+      cache[getKeyForCacheEntry(0, 0, min)] = [''];
+      return cache;
+    }, {});
 
   return {
     isInCache: function(n, k, min) {
@@ -29,9 +32,6 @@ const findAll = (n, k) => {
 };
 
 const generateNumbers = (n, k, min) => {
-  if (n <= 0 || k <= 0) {
-    return [''];
-  }
   if (cache.isInCache(n, k, min)) {
     return cache.getFromCache(n, k, min);
   }
