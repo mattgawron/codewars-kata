@@ -27,10 +27,13 @@ const createGenerator = () => {
           ? this.generate(remainingSum, remainingDigits, nextDigit)
               .map(numberSuffix => nextDigit + numberSuffix)
           : [];
-      }
+      };
+      const numbersReducer = (result, numbersForDigit) => {
+        return result.concat(numbersForDigit);
+      };
       const numbers = rangeInclusive(min, Math.min(Math.floor(n / k), 9))
         .map(handleNextDigit)
-        .reduce((result, partialNumbers) => [...result, ...partialNumbers], []);
+        .reduce(numbersReducer, []);
 
       cache.put(n, k, min, numbers);
       return numbers;
