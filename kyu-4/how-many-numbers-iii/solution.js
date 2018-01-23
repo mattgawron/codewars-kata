@@ -9,23 +9,52 @@ const generateNumbers = (n, k, min) => {
   if (n <= 0 || k <= 0) {
     return [''];
   }
+  if (isInCache(n, k, min)) {
+    return getFromCache(n, k, min);
+  }
   let numbers = [];
-  for (let nextNumber = min; nextNumber < 10; ++nextNumber) {
-    const nextDigitSum = n - nextNumber;
+  for (let nextNumber = min; nextNumber <= Math.min(n/k, 10); ++nextNumber) {
+    const remainingSum = n - nextNumber;
     const remainingDigits = k - 1;
-    const isNextSumBigEnough = nextDigitSum >= remainingDigits * nextNumber;
-    const isNextSumSmallEnough = nextDigitSum <= 9 * remainingDigits;
+    const isNextSumBigEnough = remainingSum >= remainingDigits * nextNumber;
+    const isNextSumSmallEnough = remainingSum <= 9 * remainingDigits;
     if (isNextSumBigEnough && isNextSumSmallEnough) {
       numbers = [
         ...numbers,
-        ...generateNumbers(nextDigitSum, remainingDigits, nextNumber)
+        ...generateNumbers(remainingSum, remainingDigits, nextNumber)
           .map(number => [nextNumber, ...number].join(''))
       ];
     }
   }
-  console.log(`(II) n = ${n}, k = ${k}, min = ${min}`)
+  putToCache(n, k, min, numbers);
   return numbers;
 };
+
+const cache = {};
+
+// const initCache = () => {
+//   const cache = {};
+//   for (let i = 1; i < 10; ++i) {
+//     cache[getKeyForCacheEntry(0, 0, i)] = [''];
+//   }
+//   return cache;
+// };
+
+const isInCache = (n, k, min) => {
+  return cache.hasOwnProperty(getKeyForCacheEntry(n, k, min));
+};
+
+const putToCache = (n, k, min, numbers) => {
+  if (!isInCache(n, k, min)) {
+    cache[getKeyForCacheEntry(n, k, min)] = numbers;
+  }
+};
+
+const getFromCache = (n, k, min) => {
+  return isInCache(n, k, min) ? cache[getKeyForCacheEntry(n, k, min)] : [];
+};
+
+const getKeyForCacheEntry = (n, k, min) => `${n},${k},${min}`;
 
 module.exports = {
   findAll
