@@ -31,11 +31,11 @@ describe('solution', () => {
   it('should return 32 for XXXII', () => {
     expect(solution.solution('XXXII')).toBe(32);
   });
-  it('should return 140 for CCXL', () => {
-    expect(solution.solution('CCXL')).toBe(140);
+  it('should return 240 for CCXL', () => {
+    expect(solution.solution('CCXL')).toBe(240);
   });
-  it('should return 599 for CDXCIX', () => {
-    expect(solution.solution('CDXCIX')).toBe(599);
+  it('should return 499 for CDXCIX', () => {
+    expect(solution.solution('CDXCIX')).toBe(499);
   });
   it('should return MCCXXXIV for 1234', () => {
     expect(solution.solution('MCCXXXIV')).toBe(1234);
