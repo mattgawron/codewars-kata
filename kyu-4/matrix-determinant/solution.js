@@ -1,7 +1,7 @@
-const sample = () => {
+const determinant = (m) => {
   return 'dummy';
 }
 
 module.exports = {
-  sample
+  determinant
 };
