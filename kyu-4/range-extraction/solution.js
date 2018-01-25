@@ -17,27 +17,23 @@ const solution = (list) => {
 }
 
 const getResultForFirstElement = (result, value) => {
-  result.rangeStart = value;
-  result.subsequentCount = 1;
-  return result;
+  return {extracted: result.extracted, rangeStart: value, subsequentCount: 1};
 };
 
 const getResultForSecondOrThirdElement = (result, value) => {
   if (result.rangeStart + result.subsequentCount === value) {
     ++result.subsequentCount;
-  } else {
-    result = printRange(result, value);
+    return result;
   }
-  return result;
+  return printRange(result, value);
 };
 
 const getResultForNextElementInRange = (result, value) => {
   if (result.rangeStart + result.subsequentCount === value) {
     ++result.subsequentCount;
-  } else {
-    result = printRange(result, value);
+    return result;
   }
-  return result;
+  return printRange(result, value);
 };
 
 const printRange = (result, value) => {
@@ -57,9 +53,7 @@ const printRange = (result, value) => {
       `${result.rangeStart + 1}`
     ];
   }
-  result.rangeStart = value;
-  result.subsequentCount = 1;
-  return result;
+  return {extracted: result.extracted, rangeStart: value, subsequentCount: 1};
 }
 
 module.exports = {
