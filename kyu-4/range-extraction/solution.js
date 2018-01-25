@@ -44,13 +44,18 @@ const printRange = (result, value) => {
       ...result.extracted,
       `${rangeStart}-${rangeEnd}`
     ];
-  } else if (result.subsequentCount > 0) {
+  } else if (result.subsequentCount > 1) {
     const firstValue = result.rangeStart;
     const secondValue = result.rangeStart + 1;
     result.extracted = [
       ...result.extracted,
       `${firstValue}`,
       `${result.rangeStart + 1}`
+    ];
+  } else if (result.subsequentCount > 0) {
+    result.extracted = [
+      ...result.extracted,
+      `${result.rangeStart}`
     ];
   }
   return {extracted: result.extracted, rangeStart: value, subsequentCount: 1};
