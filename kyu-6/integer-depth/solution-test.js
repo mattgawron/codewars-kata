@@ -14,6 +14,6 @@ describe('computeDepth', () => {
     expect(solution.computeDepth(21)).toBe(9);
   });
   it('should return 9 for x = 123', () => {
-    expect(solution.computeDepth(123).toBe(9);
+    expect(solution.computeDepth(123)).toBe(9);
   });
 });
