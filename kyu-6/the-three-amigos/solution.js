@@ -13,7 +13,7 @@ const threeAmigos = (numbers) => {
     // if there was any valid result found then replace it with subarray
     // if subarray's elements have the same parity and it's range is lower
     const range = getRange(subarray);
-    if (hasSameParity && getRange(subarray) < getRange(result)) {
+    if (hasSameParity && range < getRange(result)) {
       return subarray;
     }
     return result;
@@ -27,7 +27,7 @@ const getRange = (array) => {
 };
 
 const getSameParity = (array) => {
-  const parities = array.map(number => number % 2);
+  const parities = array.map(number => Math.abs(number % 2));
   return parities[0] === parities[1] && parities[1] === parities[2];
 };
 
