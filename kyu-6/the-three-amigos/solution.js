@@ -1,7 +1,7 @@
-const sample = () => {
+const threeAmigos = (numbers) => {
   return 'dummy';
 }
 
 module.exports = {
-  sample
+  threeAmigos
 };
