@@ -10,9 +10,9 @@ const revrot = (str, sz) => {
     .map(processSplittedChunk)
     .map(splittedChunk => splittedChunk.join(''))
     .join('');
-}
+};
 
-const processSplittedChunk => splittedChunk => {
+const processSplittedChunk = splittedChunk => {
   const cubesSum = splittedChunk.map(digit => Math.pow(digit, 3))
     .reduce((sum, cube) => sum + cube, 0);
   if (cubesSum % 2 === 0) {
@@ -21,7 +21,7 @@ const processSplittedChunk => splittedChunk => {
     const firstDigit = splittedChunk.shift();
     return [...splittedChunk, firstDigit];
   }
-}
+};
 
 module.exports = {
   revrot
