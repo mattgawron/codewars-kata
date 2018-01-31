@@ -1,7 +1,7 @@
-const sample = () => {
+const revrot = (str, sz) => {
   return 'dummy';
 }
 
 module.exports = {
-  sample
+  revrot
 };
