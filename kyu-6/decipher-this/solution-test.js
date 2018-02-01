@@ -16,4 +16,9 @@ describe('decipherThis', () => {
     const decrypted = 'Random test';
     expect(solution.decipherThis(encrypted)).toBe(decrypted);
   });
+  it('should return \'A trap\' for \'65 116par\'', () => {
+    const encrypted = '65 116par';
+    const decrypted = 'A trap';
+    expect(solution.decipherThis(encrypted)).toBe(decrypted);
+  });
 });
