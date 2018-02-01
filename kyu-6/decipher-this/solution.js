@@ -5,7 +5,7 @@ const decipherThis = (str) => {
 };
 
 const decodeSingleWord = (word) => {
-  const encodedRegexp = /(\d+)(\w+)/;
+  const encodedRegexp = /(\d+)([A-Za-z]*)/;
   const [original, firstLetterCode, otherChars] = word.match(encodedRegexp);
   const firstLetter = String.fromCharCode(+firstLetterCode);
   const decryptedOtherChars = swapFirstAndLastCharacter(otherChars);
