@@ -11,7 +11,7 @@ describe('decipherThis', () => {
     const decrypted = 'Ready set go';
     expect(solution.decipherThis(encrypted)).toBe(decrypted);
   });
-  it('should return \'Random test\' for \'\'', () => {
+  it('should return \'Random test\' for \'82mndoa 116tse\'', () => {
     const encrypted = '82mndoa 116tse';
     const decrypted = 'Random test';
     expect(solution.decipherThis(encrypted)).toBe(decrypted);
